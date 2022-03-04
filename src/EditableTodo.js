@@ -19,6 +19,9 @@ function EditableTodo({ todo, update, remove }) {
   const [isEditing, setIsEditing] = useState(false);
   
   /** Toggle if this is being edited */
+
+  // CR: may need callback function pattern, may not be 100% necessary,
+  // but best practice.
   function toggleEdit() {
      setIsEditing(isEditing ? false : true);
   }
@@ -32,6 +35,7 @@ function EditableTodo({ todo, update, remove }) {
   function handleSave(formData) {
     const id = todo.id;
     update({ ...formData, id });
+    // CR: make it more obvious it goes back to false
     toggleEdit();
   }
 
