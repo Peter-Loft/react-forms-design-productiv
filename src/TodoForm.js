@@ -17,7 +17,10 @@ function TodoForm({initialFormData, handleSave}) {
 
   /** Update form input. */
   function handleChange(evt) { 
-    const {fieldName, value} = evt.target;
+    // const {fieldName, value} = evt.target;
+
+    const fieldName = evt.target.name;
+    const value = evt.target.value;
 
     setFormData(currData => {
       currData[fieldName] = value;
