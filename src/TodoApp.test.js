@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import TodoApp from "./TodoApp";
 
 const TEST_TODOS = [
@@ -23,7 +23,7 @@ const TEST_TODOS = [
     },
 ];
 
-describe("TodoApp", function () {
+describe("TodoApp- Basic Rendering", function () {
     it("renders without crashing", function () {
         render(<TodoApp initialTodos={TEST_TODOS} />);
     });
@@ -64,4 +64,17 @@ describe("TodoApp", function () {
         expect(result.queryByText("Top Todo")).not.toBeInTheDocument();
     });
 
+});
+
+describe("TodoApp- EditableTodoList Edit/Delete", function () {
+    it("Deletes EditableTodoList item", function () {
+        const {container, debug} = render(<TodoApp initialTodos={TEST_TODOS} />);
+        const deleteBtns = container.querySelector(".EditableTodo-delBtn");
+        console.log(deleteBtns);
+        fireEvent.click(deleteBtns);
+
+
+        // expect(container.getElementsByClassName(".Todo").length).toEqual(2);
+        
+    }) 
 });
