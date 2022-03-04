@@ -44,6 +44,7 @@ function TodoApp({initialTodos}) {
 
   /** delete a todo by id */
   function remove(id) {
+    setTodos(oldTodos => oldTodos.filter(todo => todo.id !== id));
   }
 
   return (
@@ -51,16 +52,21 @@ function TodoApp({initialTodos}) {
         <div className="row">
 
           <div className="col-md-6">
-            <EditableTodoList todos={todos} update={update} remove={remove}/> OR
+            <EditableTodoList todos={todos} update={update} remove={remove}/> 
+            
+            { !(todos.length > 0) &&
             <span className="text-muted">You have no todos.</span>
+            }
           </div>
 
           <div className="col-md-6">
-            (if no top todo, omit this whole section)
+            
+            { todos.length > 0 &&
             <section className="mb-4">
               <h3>Top Todo</h3>
-              <TopTodo />
+              <TopTodo todos={todos}/>
             </section>
+            }
 
             <section>
               <h3 className="mb-3">Add Nü</h3>

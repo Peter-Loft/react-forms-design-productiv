@@ -32,6 +32,7 @@ function EditableTodo({ todo, update, remove }) {
   function handleSave(formData) {
     const id = todo.id;
     update({ ...formData, id });
+    toggleEdit();
   }
 
   return (
