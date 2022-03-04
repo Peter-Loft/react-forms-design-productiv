@@ -13,7 +13,7 @@ import EditableTodo from "./EditableTodo";
 
 function EditableTodoList({ todos, update, remove }) {
   return (
-    <div>
+    <div className="EditableTodoList">
       {todos.map(todo => (
         <div key={todo.id}>
           <EditableTodo
