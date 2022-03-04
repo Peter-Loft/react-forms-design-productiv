@@ -52,7 +52,16 @@ describe("TodoApp", function () {
         expect(container.querySelector(".EditableTodoList")).toBeInTheDocument();
     });
 
+    // 'no todos' shows when called
+    it(".EditableTodoList in doc -- todo list being rendered", function () {
+        const {container} = render(<TodoApp initialTodos={[]} />);
+        expect(container.querySelector(".text-muted")).toBeInTheDocument();
+    });
 
-    
+    // Top Todos does not show when no todos available
+    it("no todos not shown", function () {
+        const result = render(<TodoApp initialTodos={[]} />);
+        expect(result.queryByText("Top Todo")).not.toBeInTheDocument();
+    });
 
-})
+});
